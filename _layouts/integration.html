@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{% capture display_type %}{% case page.integration_type %}{% when "orchestrator" %}Universal Orchestrator{% when "windows-orchestrator" %}Windows Orchestrator{% when "iot-orchestrator" %}IoT Orchestrator{% when "ca-gateway" %}Gateway{% when "pam" %}PAM Provider{% when "approval-handler" %}Approval Handler{% when "orchestrator-registration" %}Orchestrator Parameter Generator{% when "metadata" %}Metadata Generation{% when "registration-handler" %}Registration Handler{% else %}{{ int_type }}{% endcase %}{% endcapture %}
+<header>
+    <h1>{{page.name}}</h1>
+    <h3>
+        <a href="{{site.baseurl}}/content/{{page.integration_type}}">{{display_type}}</a>
+    </h3>
+</header>
+
+<div>{{page.description}}</div>
+
+<div style="margin-top:3em">
+    {% if page.link_github == true %}
+    <a href="{{page.repository}}" data-toggle="tooltip" title="View on GitHub">View source on GitHub<img class="github-image-link" src="{{site.baseurl}}/assets/images/GitHub-Mark-32px.png"></a>
+    {% else %}
+    <i>This integration is not yet publicly on GitHub. For more information, please contact Keyfactor.</i>
+    {% endif %}
+</div>
+
+{{ content }}
+
+
+<footer style="font-size: small; margin-top: 5em">Licensed under the <a href="https://apache.org/licenses/LICENSE-2.0">Apache License</a></footer>
